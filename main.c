@@ -14,48 +14,67 @@
 
 void pidTest() { 
     // Show the pid, getpid and getppid
+    fflush(stdout);
     printf("================\n");
     printf("getppid: %d\n", getppid());
     printf("getpid: %d\n", getpid());
     printf("================\n");
 }
-int getMin(int len, int* arrPtr) {
-    return -1;    
+void getMin(int len, int* arrPtr) {
+    int min = arrPtr[0];  //what ever is at the first spot
+    int i;
+    for(i=1; len >= i; i++) {
+        if (arrPtr[i] < min) {
+            min = arrPtr[i];
+        }
+    }
+    printf("Min value: %d\n", min); //print out min value
 }
-int getMax(int len, int* arrPtr) {
-    return -1;
+void getMax(int len, int* arrPtr) {
+    int max = *arrPtr;
+    printf("%d\n\n", max);
+    int i;
+    for(i=1; len >= i; i++) {
+        if (arrPtr[i] < max) {
+            max = arrPtr[i];
+        }
+    }
+    printf("Max value: %d\n", max); 
 }
-int getAvg(int len, int* arrPtr) {
-    return -1;
+void getAvg(int len, int* arrPtr) {
+    printf("Avg value: \n");
 }
 int main(int argc, int* argv) { //only takes integer char
     printf("---InMain---\n\n");
     if (argc == 1) {
-        printf("Not Enough Arguments!\n");
-        return 0; //exit Program
+        printf("Not Enough Arguments!\n"
+                "Give Array of integers to get data about them!\n");
+        return 1; //exit Program
     }
     else {
         if (fork() != 0) { //in parent
-            printf("PARENT\n");
-            pidTest();
+          wait(NULL); //wait for children 
         }
         else { //in child
             if (fork() !=0) { // back in FIRST child
-                printf("CHILD1\n");
-                pidTest();
+                //printf("CHILD1\n");
+                //pidTest();
+                getMin(argc, argv);
             }
             else { //in child-child
                 if (fork() !=0) { //child-child
-                    printf("CHILD2\n");
-                    pidTest();
+                    //printf("CHILD2\n");
+                    //pidTest();
+                    getMax(argc, argv);
                 }
                 else { //child-child-child
-                    printf("CHILD3\n");
-                    pidTest();
-                }
+                    //printf("CHILD3\n");
+                    //pidTest();
+                    getAvg(argc, argv);
+                }//end child-child-child
             }//end child-child
         }// end child
         printf("Waiting for Children\n");
-        return 0;//end parent
     }
+    return 0;
 }
