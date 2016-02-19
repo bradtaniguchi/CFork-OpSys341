@@ -11,6 +11,7 @@
 #include <unistd.h> 
 #include <sys/types.h>
 #include <sys/wait.h> //include wait
+#include <stdlib.h>
 
 void pidTest() { 
     // Show the pid, getpid and getppid
@@ -44,7 +45,10 @@ void getMax(int len, int* arrPtr) {
 void getAvg(int len, int* arrPtr) {
     printf("Avg value: \n");
 }
-int main(int argc, int* argv) { //only takes integer char
+void printargs(int argc, int* argv) {
+    
+}
+int main(int argc, char** argv) { //only takes integer char
     printf("---InMain---\n\n");
     if (argc == 1) {
         printf("Not Enough Arguments!\n"
@@ -52,29 +56,32 @@ int main(int argc, int* argv) { //only takes integer char
         return 1; //exit Program
     }
     else {
-        if (fork() != 0) { //in parent
+        //printargs(argc, argv);
+        //remove ./main.o from arguments
+        argc = argc - 1;
+        argv = argv + 1;
+        int i;
+        for(i=0; i < argc; i++) {
+            int argument =*argv[i];
+            printf("%d = %c\n", i, argument);
+        }
+/*        if (fork() != 0) { //in parent
           wait(NULL); //wait for children 
         }
         else { //in child
             if (fork() !=0) { // back in FIRST child
-                //printf("CHILD1\n");
-                //pidTest();
-                getMin(argc, argv);
+                getMin(argc, *argv);
             }
             else { //in child-child
                 if (fork() !=0) { //child-child
-                    //printf("CHILD2\n");
-                    //pidTest();
-                    getMax(argc, argv);
+                    getMax(argc, *argv);
                 }
                 else { //child-child-child
-                    //printf("CHILD3\n");
-                    //pidTest();
-                    getAvg(argc, argv);
+                    getAvg(argc, *argv);
                 }//end child-child-child
             }//end child-child
         }// end child
         printf("Waiting for Children\n");
-    }
+*/    }
     return 0;
 }
