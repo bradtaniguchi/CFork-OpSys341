@@ -2,7 +2,12 @@
 Bradley Taniguchi
 C Programming Project for Operating Systems 341.
 
-###Prompt
+####INSTRUCTIONS
+1. `make` or `gcc main.c -o main.o`
+2. `./main.o <integers to sort>`
+    for example: `./main.o 1 2 3 4 5`
+
+####Prompt
 
  C program that calculates various statistical values for a list of numbers. This program will be passed a 
 series of numbers on the command and will then create three separate processes. One process will 

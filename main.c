@@ -55,6 +55,8 @@ void printarray(int len, int* array) {
         printf("%d = %d\n", i+1, array[i]);
     }
 }
+void awesomePrompt() {
+}
 int main(int argc, char** argv) { //only takes integer char
     printf("---CFork-OpSys341---\n\n");
     if (argc == 1) {
@@ -72,26 +74,27 @@ int main(int argc, char** argv) { //only takes integer char
             myArray[i] = atoi(argv[i]);
         }
         pid_t pid = getpid();
-        printarray(argc, myArray);
         if (fork() != 0) { //in parent
-          wait(NULL); //wait for children 
+            printarray(argc, myArray);
+            wait(NULL); //wait for children 
         }
-        else { //in child
-            if (fork() !=0) { // back in FIRST child
+        else { //Start child
+            if (fork() !=0) { //Still in child
                 getMin(argc, myArray);
+                wait(NULL);
             }
-            else { //in child-child
-                if (fork() !=0) { //child-child
+            else { //Start child-child
+                if (fork() !=0) { //Still in child-child
                     getMax(argc, myArray);
+                    wait(NULL); //wait for children
                 }
-                else { //child-child-child
+                else { //Start child-child-child
                     getAvg(argc, myArray);
                 }//end child-child-child
             }//end child-child
         }// end child
-        //printf("Waiting for Children\n");
-        if(pid == getpid()) { //we are parent
-            printf("\n---CFork-OpSys341---\n");
+        if(pid == getpid()) { //we are THE parent
+            printf("\n---CFork-OpSys341---\n\n");
         }
     }
     return 0;
