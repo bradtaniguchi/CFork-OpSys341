@@ -24,8 +24,7 @@ void pidTest() {
 void getMin(int len, int* arrPtr) {
     int min = arrPtr[0];  //what ever is at the first spot
     int i;
-    for(i=1; len > i; i++) {
-        //printf(">>> %d, %d",i, arrPtr[i]); 
+    for(i=1; len > i; i++) { 
         if (arrPtr[i] < min) {
             min = arrPtr[i];
         }
@@ -34,10 +33,10 @@ void getMin(int len, int* arrPtr) {
     printf("Min value: %d\n", min); //print out min value
 }
 void getMax(int len, int* arrPtr) {
-    int max = *arrPtr;
+    int max = arrPtr[0];
     int i;
-    for(i=1; len >= i; i++) {
-        if (arrPtr[i] < max) {
+    for(i=1; len > i; i++) {
+        if (arrPtr[i] > max) {
             max = arrPtr[i];
         }
     }
@@ -45,15 +44,28 @@ void getMax(int len, int* arrPtr) {
     printf("Max value: %d\n", max); 
 }
 void getAvg(int len, int* arrPtr) {
+    float avg;
+    int i, total;
+    for(i=0; len > i; ++i) {
+        printf(">>> %d\n", arrPtr[i]);
+        total += arrPtr[i]; //add all values into total
+    }
+    printf(">>> %d, %d>>>\n", total, len);
+    avg = (total/len);
+
     fflush(stdout);
-    printf("Avg value: 0\n");
+    printf("Avg value: %f\n", avg);
 }
 void printarray(int len, int* array) {
     int i;
-    printf("i   Integer\n");
+    printf("o:::::::::::::::::\n");
+    printf("o:::Data given::::\n");
+    printf("o:::i = Integer:::\n");
     for (i=0; i < len; i++) {
-        printf("%d = %d\n", i+1, array[i]);
+        printf("o:::::::::::::::::\r");
+        printf("o:::%d = %d\n", i+1, array[i]);
     }
+    printf("o:::::::::::::::::\n\n");
 }
 void awesomePrompt() {
 }
@@ -68,10 +80,12 @@ int main(int argc, char** argv) { //only takes integer char
         //remove ./main.o from arguments
         argc = argc - 1;
         argv = argv + 1;// think this works
-        int i;
+        int i, len;
         int myArray[argc]; //create array to work on
         for(i=0; i < argc; i++) {
+            //if (argv[i]) //check if integer, else dont add to new array
             myArray[i] = atoi(argv[i]);
+            len++; //new array length after checking
         }
         pid_t pid = getpid();
         if (fork() != 0) { //in parent
