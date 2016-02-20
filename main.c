@@ -12,6 +12,7 @@
 #include <sys/types.h>
 #include <sys/wait.h> //include wait
 #include <stdlib.h>
+#include <stdbool.h>
 
 void pidTest() { 
     // Show the pid, getpid and getppid
@@ -66,13 +67,17 @@ void printarray(int len, int* array) {
     printf("o:::::::::::::::::\n\n");
 }
 void awesomePrompt() {
-
+    printf("\n  _____ ______         _\n");    
+    printf(" / ____|  ____|       | |   \n");
+    printf("| |    | |__ ___  _ __| | __\n");
+    printf("| |    |  __/ _ \\| '__| |/ /\n");
+    printf("| |____| | | (_) | |  |   < \n");
+    printf(" \\_____|_|  \\___/|_|  |_|\\_\\\n\n");
 }
 int main(int argc, char** argv) { //only takes integer char
-    printf("---CFork-OpSys341---\n\n");
     if (argc == 1) {
         printf("Not Enough Arguments!\n"
-                "Give Array of integers to get data about them!\n");
+                "Give a list of integers as arguments to get data about them!\n");
         return 1; //exit Program
     }
     else {
@@ -88,6 +93,7 @@ int main(int argc, char** argv) { //only takes integer char
         }
         pid_t pid = getpid();
         if (fork() != 0) { //in parent
+            awesomePrompt();
             printarray(argc, myArray);
             wait(NULL); //wait for children 
         }
@@ -107,7 +113,7 @@ int main(int argc, char** argv) { //only takes integer char
             }//end child-child
         }// end child
         if(pid == getpid()) { //we are THE parent
-            printf("\n---CFork-OpSys341---\n\n");
+            printf("\n\n");
         }
     }
     return 0;
