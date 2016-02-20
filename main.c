@@ -45,12 +45,10 @@ void getMax(int len, int* arrPtr) {
 }
 void getAvg(int len, int* arrPtr) {
     float avg;
-    int i, total;
-    for(i=0; len > i; ++i) {
-        printf(">>> %d\n", arrPtr[i]);
+    int i, total = 0;
+    for(i=0; len > i; i++) {
         total += arrPtr[i]; //add all values into total
     }
-    printf(">>> %d, %d>>>\n", total, len);
     avg = (total/len);
 
     fflush(stdout);
@@ -68,6 +66,7 @@ void printarray(int len, int* array) {
     printf("o:::::::::::::::::\n\n");
 }
 void awesomePrompt() {
+
 }
 int main(int argc, char** argv) { //only takes integer char
     printf("---CFork-OpSys341---\n\n");
