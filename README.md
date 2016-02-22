@@ -6,27 +6,13 @@ C Programming Project for Operating Systems 341.
 1. compile with `make` or `gcc main.c -o main.o`
 2. `./main.o <integers to sort>`
     for example: `./main.o 1 2 3 4 5`
-    Will give the following output:
-`/ ____|  ____|       | |   
-| |    | |__ ___  _ __| | __
-| |    |  __/ _ \| '__| |/ /
-| |____| | | (_) | |  |   < 
- \_____|_|  \___/|_|  |_|\_\
-
-o:::::::::::::::::
-o:::Data given::::
-o:::i = Integer:::
-o:::1 = 1:::::::::
-o:::2 = 2:::::::::
-o:::3 = 3:::::::::
-o:::4 = 4:::::::::
-o:::5 = 5:::::::::
-o:::::::::::::::::
+    Will give the following output:  
 
 Min value: 1
 Max value: 5
 Avg value: 3.000000
-`
+
+
 ####Prompt
 
  C program that calculates various statistical values for a list of numbers. This program will be passed a 
