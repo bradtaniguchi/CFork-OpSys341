@@ -12,6 +12,8 @@ Min value: 1
 Max value: 5
 Avg value: 3.000000
 
+####Screenshot
+![Picture] [screenshots/screenshot3.png]
 
 ####Prompt
 
