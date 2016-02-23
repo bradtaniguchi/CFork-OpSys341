@@ -3,7 +3,12 @@
  */
 #include <stdio.h>
 #include <unistd.h> 
- 
+
+struct thread_args { // to allow single argument pass to get functions
+    int len;
+    int *arrPtr;
+};
+
 void pidTest() { 
     // Show the pid, getpid and getppid
     fflush(stdout);
@@ -63,5 +68,28 @@ void awesomePrompt() {
     printf("| |    |  __/ _ \\| '__| |/ /\n");
     printf("| |____| | | (_) | |  |   < \n");
     printf(" \\_____|_|  \\___/|_|  |_|\\_\\\n\n");
+}
+void *getMinThread(void *StructPtr) {
+    /*Sadly threads are to dumb to use more than 1 argument. 
+    * So I need to use the struct to pass more than 1 argument
+    * This means I need 3 more NEW functions to wrap around the old ones
+    * as C ALSO doesn't naturally allow function overloading :/
+    */
+    struct thread_args *args = StructPtr; 
+    int mylen = args->len;
+    int *myarrPtr = args->arrPtr;
+    getMin(mylen, myarrPtr);
+}
+void *getMaxThread(void *StructPtr) {
+    struct thread_args *args = StructPtr;
+    int mylen = args->len;
+    int *myarrPtr = args->arrPtr;
+    getMax(mylen, myarrPtr);
+}
+void *getAvgThread(void *StructPtr) { 
+    struct thread_args *args = StructPtr;
+    int mylen = args->len;
+    int *myarrPtr = args->arrPtr;
+    getMax(mylen, myarrPtr);
 }
 
