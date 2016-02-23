@@ -3,7 +3,7 @@ Bradley Taniguchi
 C Programming Project for Operating Systems 341.
 
 ####INSTRUCTIONS
-1. compile with `make` or `gcc main.c -o main.o`
+1. compile with `make` or `gcc cfork.c -o cfork.o && gcc cthread.c -o cthread.o`
 2. `./main.o <integers to sort>`
     for example: `./main.o 1 2 3 4 5`
     Will give the following output:  
@@ -31,3 +31,6 @@ The average value is 82
 The minimum value is 72
 
 The maximum value is 95
+
+#####PART 2: 
+Do the same as above, but using pthread
