@@ -4,11 +4,8 @@
 #include <stdio.h>
 #include <unistd.h> 
 #include <pthread.h>
+#include "headers.h"
 
-struct thread_args {
-    int len;
-    int *arrPtr;
-};
 
 void pidTest() { 
     // Show the pid, getpid and getppid
@@ -76,11 +73,13 @@ void *getMinThread(void *StructPtr) {
     * This means I need 3 more NEW functions to wrap around the old ones
     * as C ALSO doesn't naturally allow function overloading :/
     */
-    printf("in getminthread\n");
     struct thread_args *args = StructPtr; 
-    int mylen = args->len;
-    int *myarrPtr = args->arrPtr;
-    getMin(mylen, myarrPtr);
+    int mylen = 0;
+    int *myarrPtr = NULL;
+    mylen = args->len;
+    myarrPtr = args->arrPtr;
+    printf("In Thread function len:, %d\n", mylen);
+    //getMin(mylen, myarrPtr); //getting segmentation fault here
     pthread_exit(0);
 }
 void *getMaxThread(void *StructPtr) {

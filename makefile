@@ -3,7 +3,7 @@
 all: cfork.o cthread.o clean
 
 commons.o: commons.c
-	gcc -pthread -c commons.c -o commons.o
+	gcc -c commons.c -o commons.o
 
 cfork.o: cfork.c commons.o
 	gcc cfork.c commons.o -o cfork.o

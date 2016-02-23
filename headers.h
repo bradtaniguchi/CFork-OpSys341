@@ -5,7 +5,10 @@
  * Dr. Bin Tang
  * 02/17/16
  */
-struct thread_args; //structure to be passed to threadtype functions
+struct thread_args {
+    int len;
+    int *arrPtr;
+}; //structure to be passed to threadtype functions
 void pidTest();
 void getMin(int len, int* arrPtr);
 void getMax(int len, int* arrPtr);
