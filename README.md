@@ -13,7 +13,7 @@ Max value: 5
 Avg value: 3.000000
 
 ####Screenshot
-![Screenshot of Output] (/screenshots/screenshot3.png?raw=true)
+![Screenshot of Output] (/screenshots/snapshot3.png?raw=true)
 
 ####Prompt
 
