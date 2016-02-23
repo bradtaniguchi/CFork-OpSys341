@@ -3,8 +3,9 @@
  */
 #include <stdio.h>
 #include <unistd.h> 
+#include <pthread.h>
 
-struct thread_args { // to allow single argument pass to get functions
+struct thread_args {
     int len;
     int *arrPtr;
 };
@@ -75,21 +76,25 @@ void *getMinThread(void *StructPtr) {
     * This means I need 3 more NEW functions to wrap around the old ones
     * as C ALSO doesn't naturally allow function overloading :/
     */
+    printf("in getminthread\n");
     struct thread_args *args = StructPtr; 
     int mylen = args->len;
     int *myarrPtr = args->arrPtr;
     getMin(mylen, myarrPtr);
+    pthread_exit(0);
 }
 void *getMaxThread(void *StructPtr) {
     struct thread_args *args = StructPtr;
     int mylen = args->len;
     int *myarrPtr = args->arrPtr;
     getMax(mylen, myarrPtr);
+    pthread_exit(0);
 }
 void *getAvgThread(void *StructPtr) { 
     struct thread_args *args = StructPtr;
     int mylen = args->len;
     int *myarrPtr = args->arrPtr;
     getMax(mylen, myarrPtr);
+    pthread_exit(0);
 }
 
