@@ -1,14 +1,16 @@
 # Makefile for CFork-OpSys341
 
-all: cfork.o cthread.o
+all: cfork.o cthread.o clean
 
-cfork.o: cfork.c 
-	gcc cfork.c -o cfork.o
+commons.o: commons.c
+	gcc -c commons.c -o commons.o
 
-cthread.o: cthread.c
-	gcc cthread.c -o cthread.o
+cfork.o: cfork.c commons.o
+	gcc cfork.c commons.o -o cfork.o
+
+cthread.o: cthread.c commons.o
+	gcc cthread.c commons.o -o cthread.o
 
 clean:
-	rm -f cfork.o
-	rm -f cthread.o
+	rm -f commons.o
 
