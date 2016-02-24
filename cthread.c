@@ -27,16 +27,21 @@ int main(int argc, char** argv)  {
         }
         pthread_t minthread, maxthread, avgthread; //declare threads
         pthread_attr_t attr;
-        struct thread_args *minargs = malloc(sizeof(minargs));
-        minargs->len = argc;
-        printf("Size: %zu\n", sizeof(sizeof(minargs)));
-        printf("Main len in main: %d\n", argc);
-        minargs->arrPtr = myArray;
+        struct thread_args *args = malloc(sizeof(args));
+        args->len = argc;
+        args->arrPtr = myArray;
         pthread_attr_init(&attr);
-        pthread_create(&minthread, &attr, getMinThread, minargs);
+        awesomePrompt();
+        printarray(argc, myArray);
+
+        pthread_create(&minthread, &attr, getMinThread, args);
         pthread_join(minthread, NULL);
-        //pthread_t thread1;
-        // integer1 = pthread_create(&thread1, NULL, print_message_function, (void*) message1)
+        
+        pthread_create(&maxthread, &attr, getMaxThread, args);
+        pthread_join(maxthread, NULL);
+
+        pthread_create(&avgthread, &attr, getAvgThread, args);
+        pthread_join(avgthread, NULL);
     }
     return 0;
 }

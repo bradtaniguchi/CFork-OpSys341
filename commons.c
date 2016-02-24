@@ -78,8 +78,7 @@ void *getMinThread(void *StructPtr) {
     int *myarrPtr = NULL;
     mylen = args->len;
     myarrPtr = args->arrPtr;
-    printf("In Thread function len:, %d\n", mylen);
-    //getMin(mylen, myarrPtr); //getting segmentation fault here
+    getMin(mylen, myarrPtr); //getting segmentation fault here
     pthread_exit(0);
 }
 void *getMaxThread(void *StructPtr) {
@@ -93,7 +92,7 @@ void *getAvgThread(void *StructPtr) {
     struct thread_args *args = StructPtr;
     int mylen = args->len;
     int *myarrPtr = args->arrPtr;
-    getMax(mylen, myarrPtr);
+    getAvg(mylen, myarrPtr);
     pthread_exit(0);
 }
 
