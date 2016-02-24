@@ -4,17 +4,17 @@ C Programming Project for Operating Systems 341.
 
 ####INSTRUCTIONS
 1. compile with `make` or `gcc cfork.c -o cfork.o && gcc cthread.c -o cthread.o`
-2. `./main.o <integers to sort>`
-    for example: `./main.o 1 2 3 4 5`
-    Will give the following output:  
+2. `./cfork.o <integers to gather data from>` for fork multiple proccess version.
+####OR
+`./cthread.o <integers to gather data from>` for the thread, single proccess version.
 
-Min value: 1
-Max value: 5
-Avg value: 3.000000
-
+---
 ####Screenshot
+The output is the same for both version
+NOTE: use the above instructions, `./main.o` is not longer the command to use.
 ![Screenshot of Output] (/screenshots/snapshot3.png?raw=true)
 
+---
 ####Prompt
 
  C program that calculates various statistical values for a list of numbers. This program will be passed a 
