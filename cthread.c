@@ -27,13 +27,13 @@ int main(int argc, char** argv)  {
         }
         pthread_t minthread, maxthread, avgthread; //declare threads
         pthread_attr_t attr;
-        struct thread_args *args = malloc(sizeof(args));
-        args->len = argc;
-        printf("Size: %zu\n", sizeof(sizeof(args)));
+        struct thread_args *minargs = malloc(sizeof(minargs));
+        minargs->len = argc;
+        printf("Size: %zu\n", sizeof(sizeof(minargs)));
         printf("Main len in main: %d\n", argc);
-        args->arrPtr = myArray;
+        minargs->arrPtr = myArray;
         pthread_attr_init(&attr);
-        pthread_create(&minthread, &attr, getMinThread, &args);
+        pthread_create(&minthread, &attr, getMinThread, minargs);
         pthread_join(minthread, NULL);
         //pthread_t thread1;
         // integer1 = pthread_create(&thread1, NULL, print_message_function, (void*) message1)
