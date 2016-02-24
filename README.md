@@ -9,12 +9,26 @@ C Programming Project for Operating Systems 341.
 `./cthread.o <integers to gather data from>` for the thread, single proccess version.
 
 ---
+
 ####Screenshot
 The output is the same for both version
 NOTE: use the above instructions, `./main.o` is not longer the command to use.
 ![Screenshot of Output] (/screenshots/snapshot3.png?raw=true)
 
 ---
+
+####Files
+`cfork.o` __Must be Compiled, Runnable__ - runs the fork version of the program
+`cthread.o` __Must be Compiled, Runnable__ - runs the thread version of the program
+`commons.c` __SourceFile__ - holds the common functions, and thread "wrappers" for the two programs.
+`cfork.c` __SourceFile__ - holds the main function of the fork version of the program
+`cthread.o` __SourceFile__ - holds the main functioin of the thread version of the program
+`headers.h` - provides references to the commons.c functions to the two programs.
+`makefile` - used with GNU Make, to easily build the two programs.
+`README.md` - this file.
+
+---
+
 ####Prompt
 
  C program that calculates various statistical values for a list of numbers. This program will be passed a 
