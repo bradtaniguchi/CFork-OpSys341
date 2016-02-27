@@ -1,5 +1,6 @@
 # CFork-OpSys341
 Bradley Taniguchi
+Jerrett Dixon
 C Programming Project for Operating Systems 341.
 
 ####INSTRUCTIONS

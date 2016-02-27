@@ -1,4 +1,5 @@
 /* Bradley Taniguchi
+ * Jarret Dixon
  * Common Code between the two main programs
  */
 #include <stdio.h>
