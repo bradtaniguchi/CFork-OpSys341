@@ -1,4 +1,9 @@
 # Makefile for CFork-OpSys341
+# Bradley Taniguchi
+# Jarrett Dixon
+# CSC341
+# 03/03/16
+
 
 all: cfork.o cthread.o clean
 
